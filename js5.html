@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	<script type="text/javascript" src="js5.js"></script>
+</head>
+<body ng-controller="profileController">
+
+	<div class="user-profile">
+		<div class="pic-container">
+			<img ng-src="profile-picture.png">
+		</div>
+		<div class="content-container">
+			<h1>User Name</h1>
+			<div class="about-container paragraph-block">
+				<h4>About Me</h4>
+				<p ng-show="displayAboutMe.display" ng-bind="formValues.aboutMe" ng-click="displayAboutMe.toggle()"></p>
+				<div class="textarea-container" ng-show="!displayAboutMe.display">
+					<textarea class="text-block" type="text" ng-model="formValues.aboutMe"></textarea>
+					<button ng-click="displayAboutMe.toggle()">Submit</button>
+				</div>
+			</div>
+			<div class="mission-container paragraph-block">
+				<h4>Mission Statement</h4>
+				<p ng-show="displayMission.display" ng-bind="formValues.mission" ng-click="displayMission.toggle()"></p>
+				<div class="textarea-container" ng-show="!displayMission.display">
+					<textarea class="text-block" type="text" ng-model="formValues.mission"></textarea>
+					<button ng-click="displayMission.toggle()">Submit</button>
+				</div>
+			</div>
+			<div class="villains-container list-block">
+				Favorite Villains
+				<ul>
+					<li>Pirates</li>
+					<li>Robots</li>
+					<li>Zombies</li>
+				</ul>
+			</div>
+			<div class="movies-container list-block">
+				Favorite Movies
+				<ul>
+					<li>The Bird with Crystal Plumage</li>
+					<li>School of the Holy Beast</li>
+					<li>Cemetary Man</li>
+				</ul>
+			</div>
+			<div class="languages-container list-block">
+				Languages Known
+				<ul>
+					<li>Sumerian</li>
+					<li>brainfuck</li>
+					<li>Ook!</li>
+				</ul>
+			</div>
+			
+		</div>
+
+	</div>
+</body>
+</html>
