@@ -10,48 +10,25 @@
 
 	<div class="user-profile">
 		<div class="pic-container">
-			<img ng-src="profile-picture.png">
+			<img ng-click="profilePic.show = !profilePic.show" ng-src="{{profilePic.url}}">
+			<input ng-show="!profilePic.show" ng-model="profilePic.url" class="profile-pic-url" type="url"></input>
+			<button class="profile-pic-url" ng-show="!profilePic.show" ng-click="profilePic.show = !profilePic.show">Submit</button>
 		</div>
 		<div class="content-container">
 			<h1>User Name</h1>
-			<div class="about-container paragraph-block">
-				<h4>About Me</h4>
-				<p ng-show="displayAboutMe.display" ng-bind="formValues.aboutMe" ng-click="displayAboutMe.toggle()"></p>
-				<div class="textarea-container" ng-show="!displayAboutMe.display">
-					<textarea class="text-block" type="text" ng-model="formValues.aboutMe"></textarea>
-					<button ng-click="displayAboutMe.toggle()">Submit</button>
+			<div class="about-container paragraph-block" ng-repeat="paragraph in paragraphs">
+				<h4>{{ paragraph.name }}</h4>
+				<p ng-show="paragraph.show" ng-bind="paragraph.content" ng-click="paragraph.show = !paragraph.show"></p>
+				<div class="textarea-container" ng-show="!paragraph.show">
+					<textarea class="text-block" type="text" ng-model="paragraph.content"></textarea>
+					<button ng-click="paragraph.show = !paragraph.show">Submit</button>
 				</div>
 			</div>
-			<div class="mission-container paragraph-block">
-				<h4>Mission Statement</h4>
-				<p ng-show="displayMission.display" ng-bind="formValues.mission" ng-click="displayMission.toggle()"></p>
-				<div class="textarea-container" ng-show="!displayMission.display">
-					<textarea class="text-block" type="text" ng-model="formValues.mission"></textarea>
-					<button ng-click="displayMission.toggle()">Submit</button>
-				</div>
-			</div>
-			<div class="villains-container list-block">
-				Favorite Villains
-				<ul>
-					<li>Pirates</li>
-					<li>Robots</li>
-					<li>Zombies</li>
-				</ul>
-			</div>
-			<div class="movies-container list-block">
-				Favorite Movies
-				<ul>
-					<li>The Bird with Crystal Plumage</li>
-					<li>School of the Holy Beast</li>
-					<li>Cemetary Man</li>
-				</ul>
-			</div>
-			<div class="languages-container list-block">
-				Languages Known
-				<ul>
-					<li>Sumerian</li>
-					<li>brainfuck</li>
-					<li>Ook!</li>
+			<div class="villains-container list-block" ng-repeat="list in lists">
+				{{ list.name }}
+				<ul ng-repeat="listItem in list.listContent">
+					<li ng-show="listItem.show" ng-click="listItem.show = !listItem.show">{{ listItem.value }}</li>
+					<input type="text" ng-model="listItem.value" ng-show="!listItem.show" ng-click="listItem.show = !listItem.show"></input>
 				</ul>
 			</div>
 			

@@ -9,11 +9,15 @@
 }
 .list-block {
   display: inline-block;
-  padding-right: 80px;
+  width: 25%;
+  margin: auto;
 }
 .user-profile p {
   width: 650px;
 }
 .user-profile .text-block {
   width: 650px;
+}
+.profile-pic-url {
+  display: block;
 }
